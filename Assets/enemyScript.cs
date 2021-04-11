@@ -14,7 +14,7 @@ public class enemyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		transform.Translate(Vector3.forward * 3f * Time.deltaTime); 
+		transform.Translate(Vector3.forward * 2f * Time.deltaTime); 
 	}
 
 	IEnumerator Move() {

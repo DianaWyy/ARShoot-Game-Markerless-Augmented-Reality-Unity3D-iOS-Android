@@ -7,9 +7,11 @@ public class webCamScript : MonoBehaviour {
 
 	public GameObject webCameraPlane;
 	public Button fireButton;
+	public int count;
 
 	// Use this for initialization
 	void Start () {
+		count = 0;
 
 		if (Application.isMobilePlatform) {
 			GameObject cameraParent = new GameObject("camParent");
@@ -26,6 +28,8 @@ public class webCamScript : MonoBehaviour {
 		WebCamTexture webCameraTexture = new WebCamTexture ();
 		webCameraPlane.GetComponent<MeshRenderer> ().material.mainTexture = webCameraTexture;
 		webCameraTexture.Play ();
+
+       
 		
 	}
 
@@ -38,12 +42,12 @@ public class webCamScript : MonoBehaviour {
 
 		GetComponent<AudioSource> ().Play ();
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-
-		Quaternion cameraRotation = new Quaternion (Input.gyro.attitude.x, Input.gyro.attitude.y, -Input.gyro.attitude.z, -Input.gyro.attitude.w);
+	IEnumerator Update()
+	{
+		Quaternion cameraRotation = new Quaternion(Input.gyro.attitude.x, Input.gyro.attitude.y, -Input.gyro.attitude.z, -Input.gyro.attitude.w);
 		this.transform.localRotation = cameraRotation;
-
+		yield return new WaitForSeconds(5f);
 	}
 }

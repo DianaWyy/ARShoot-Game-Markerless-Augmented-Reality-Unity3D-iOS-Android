@@ -33,7 +33,7 @@ public class collisionScript : MonoBehaviour {
 
 		Destroy (gameObject);
 
-
+		KeepScore.Score += 1;
 	}
 
 }
